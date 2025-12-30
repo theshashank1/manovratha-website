@@ -24,23 +24,23 @@ export default function App() {
 
   const renderPage = () => {
     switch (page) {
-        case 'home': return <Home onNavigate={setPage} />;
-        case 'about': return <About />;
-        case 'professionals': return <Professionals />;
-        case 'organizations': return <Organizations />;
-        case 'wellness': return <WellnessHub onNavigate={setPage} />;
-        case 'careers': return <Careers />;
-        case 'faq': return <FAQ />;
-        case 'contact': return <Contact />;
-        case 'privacy': return <Privacy />;
-        default: return <Home onNavigate={setPage} />;
+      case 'home': return <Home onNavigate={setPage} />;
+      case 'about': return <About />;
+      case 'professionals': return <Professionals />;
+      case 'organizations': return <Organizations />;
+      case 'wellness': return <WellnessHub onNavigate={setPage} />;
+      case 'careers': return <Careers />;
+      case 'faq': return <FAQ />;
+      case 'contact': return <Contact />;
+      case 'privacy': return <Privacy />;
+      default: return <Home onNavigate={setPage} />;
     }
   };
 
   return (
     <div className="min-h-screen font-sans text-brand-dark bg-brand-surface flex flex-col">
       <Header onNavigate={setPage} currentPage={page} />
-      
+
       <main className="flex-grow">
         <AnimatePresence mode="wait">
           <MotionDiv
@@ -54,16 +54,17 @@ export default function App() {
           </MotionDiv>
         </AnimatePresence>
       </main>
-      
+
       <Footer onNavigate={setPage} />
 
-       {/* Simple Floating Action Button */}
+      {/* Floating Action Button - Mobile optimized */}
       {page !== 'contact' && (
-        <button 
-            onClick={() => setPage('contact')}
-            className="fixed bottom-8 right-8 z-40 bg-brand-dark text-white p-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+        <button
+          onClick={() => setPage('contact')}
+          className="fixed bottom-6 right-4 md:bottom-8 md:right-8 z-40 bg-brand-dark text-white p-4 md:p-4 rounded-full shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 safe-bottom group"
+          aria-label="Contact Us"
         >
-            <span className="material-symbols-outlined text-2xl">chat</span>
+          <span className="material-symbols-outlined text-2xl md:text-2xl group-hover:animate-bounce">chat</span>
         </button>
       )}
     </div>
