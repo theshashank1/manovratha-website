@@ -54,7 +54,7 @@ const Footer: React.FC = () => {
                     </div>
 
                     <div>
-                        <h4 className="font-bold text-white text-lg mb-8 tracking-wide">Explore</h4>
+                        <h3 className="font-bold text-white text-lg mb-8 tracking-wide">Explore</h3>
                         <ul className="space-y-6 text-base">
                             {[
                                 { label: 'For Professionals', route: '/professionals', icon: 'psychology' },
@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
                                             rel="noopener noreferrer"
                                             className="group flex items-center gap-3 hover:text-brand-primary transition-colors text-left w-full"
                                         >
-                                            <span className="material-symbols-outlined text-xl text-brand-primary/60 group-hover:text-brand-primary transition-colors">{item.icon}</span>
+                                            <span className="material-symbols-outlined text-xl text-brand-secondary group-hover:text-brand-primary transition-colors" aria-hidden="true">{item.icon}</span>
                                             <span>{item.label}</span>
                                         </a>
                                     ) : (
@@ -78,7 +78,7 @@ const Footer: React.FC = () => {
                                             to={item.route}
                                             className="group flex items-center gap-3 hover:text-brand-primary transition-colors text-left w-full"
                                         >
-                                            <span className="material-symbols-outlined text-xl text-brand-primary/60 group-hover:text-brand-primary transition-colors">{item.icon}</span>
+                                            <span className="material-symbols-outlined text-xl text-brand-secondary group-hover:text-brand-primary transition-colors" aria-hidden="true">{item.icon}</span>
                                             <span>{item.label}</span>
                                         </Link>
                                     )}
@@ -88,7 +88,7 @@ const Footer: React.FC = () => {
                     </div>
 
                     <div>
-                        <h4 className="font-bold text-white text-lg mb-8 tracking-wide">Support</h4>
+                        <h3 className="font-bold text-white text-lg mb-8 tracking-wide">Support</h3>
                         <ul className="space-y-6 text-base">
                             {[
                                 { label: 'Contact Us', route: '/contact', icon: 'mail' },
@@ -100,7 +100,7 @@ const Footer: React.FC = () => {
                                         to={item.route}
                                         className="group flex items-center gap-3 hover:text-brand-primary transition-colors text-left w-full"
                                     >
-                                        <span className="material-symbols-outlined text-xl text-brand-primary/60 group-hover:text-brand-primary transition-colors">{item.icon}</span>
+                                        <span className="material-symbols-outlined text-xl text-brand-secondary group-hover:text-brand-primary transition-colors" aria-hidden="true">{item.icon}</span>
                                         <span>{item.label}</span>
                                     </Link>
                                 </li>
@@ -109,7 +109,7 @@ const Footer: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium opacity-60">
+                <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-brand-light/70">
                     <p>© 2023 Manovratha Pvt Ltd.</p>
                     <div className="flex gap-6">
                         <span>Made with ❤️ in India</span>

@@ -57,8 +57,8 @@ const Hero: React.FC = () => {
                         transition={{ duration: 0.6 }}
                         className="inline-flex items-center gap-2 px-4 py-2 md:px-6 rounded-full bg-white/80 backdrop-blur-sm border border-brand-light shadow-sm mb-6 md:mb-8 hover:shadow-md transition-shadow cursor-default group"
                     >
-                        <span className="material-symbols-outlined text-[#6B8E5E] text-lg md:text-xl group-hover:animate-spin transition-transform">spa</span>
-                        <span className="text-[10px] md:text-sm font-bold tracking-widest text-brand-dark/70 uppercase">Wellness Reimagined</span>
+                        <span className="material-symbols-outlined text-[#6B8E5E] text-lg md:text-xl group-hover:animate-spin transition-transform" aria-hidden="true">spa</span>
+                        <span className="text-[10px] md:text-sm font-bold tracking-widest text-brand-dark uppercase">Wellness Reimagined</span>
                     </MotionDiv>
 
                     <h1 ref={headlineRef} className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-brand-dark leading-[1.1] mb-6 md:mb-8">
@@ -82,10 +82,10 @@ const Hero: React.FC = () => {
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.02, y: -2 }}
                             whileTap={{ scale: 0.98 }}
-                            className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#6B8E5E] text-white font-bold text-lg shadow-xl shadow-[#6B8E5E]/20 hover:shadow-[#6B8E5E]/40 flex items-center justify-center gap-2 transition-all"
+                            className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#4A6A48] text-white font-bold text-lg shadow-xl shadow-[#4A6A48]/20 hover:shadow-[#4A6A48]/40 flex items-center justify-center gap-2 transition-all"
                         >
                             <span>Join the Community</span>
-                            <span className="material-symbols-outlined text-sm">favorite</span>
+                            <span className="material-symbols-outlined text-sm" aria-hidden="true">favorite</span>
                         </MotionA>
 
                         <MotionButton
@@ -94,7 +94,7 @@ const Hero: React.FC = () => {
                             className="w-full sm:w-auto px-8 py-4 rounded-full bg-white border border-brand-light text-brand-dark font-bold text-lg shadow-sm hover:border-[#6B8E5E]/50 flex items-center justify-center gap-2 group transition-all"
                         >
                             <span>Explore Solutions</span>
-                            <span className="material-symbols-outlined text-sm group-hover:rotate-45 transition-transform">explore</span>
+                            <span className="material-symbols-outlined text-sm group-hover:rotate-45 transition-transform" aria-hidden="true">explore</span>
                         </MotionButton>
                     </div>
 
@@ -154,7 +154,7 @@ const Hero: React.FC = () => {
                                         className={`absolute ${pillar.pos} bg-white/90 backdrop-blur-md p-2 sm:p-3 md:p-4 pr-4 sm:pr-5 md:pr-6 rounded-xl sm:rounded-2xl shadow-floating z-20 flex items-center gap-2 sm:gap-3 border border-white/50 w-36 sm:w-44 md:w-52 cursor-pointer hover:shadow-xl transition-shadow`}
                                     >
                                         <div className={`w-7 h-7 sm:w-8 sm:h-8 md:w-12 md:h-12 rounded-lg sm:rounded-xl flex items-center justify-center ${pillar.color} shadow-inner shrink-0`}>
-                                            <span className="material-symbols-outlined text-base sm:text-lg md:text-2xl">{pillar.icon}</span>
+                                            <span className="material-symbols-outlined text-base sm:text-lg md:text-2xl" aria-hidden="true">{pillar.icon}</span>
                                         </div>
                                         <div>
                                             <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold text-gray-400 uppercase tracking-widest">Pillar {i + 1}</p>
