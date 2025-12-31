@@ -5,6 +5,7 @@ import gsap from 'gsap';
 // Cast motion components
 const MotionDiv = motion.div as any;
 const MotionButton = motion.button as any;
+const MotionA = motion.a as any;
 
 const Hero: React.FC = () => {
     const headlineRef = useRef<HTMLHeadingElement>(null);
@@ -75,14 +76,17 @@ const Hero: React.FC = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto px-4 md:px-0">
-                        <MotionButton
+                        <MotionA
+                            href="https://chat.whatsapp.com/HiIBVPYWfqk8A5Pm3X4Qpv"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             whileHover={{ scale: 1.02, y: -2 }}
                             whileTap={{ scale: 0.98 }}
                             className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#6B8E5E] text-white font-bold text-lg shadow-xl shadow-[#6B8E5E]/20 hover:shadow-[#6B8E5E]/40 flex items-center justify-center gap-2 transition-all"
                         >
                             <span>Join the Community</span>
                             <span className="material-symbols-outlined text-sm">favorite</span>
-                        </MotionButton>
+                        </MotionA>
 
                         <MotionButton
                             whileHover={{ scale: 1.02, y: -2 }}

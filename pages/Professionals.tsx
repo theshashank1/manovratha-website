@@ -78,7 +78,7 @@ const Professionals: React.FC = () => {
                         {/* Single Primary CTA - Dominant & Clear */}
                         <div className="flex flex-col items-center gap-4">
                             <MotionA
-                                href="https://docs.google.com/forms/d/e/1FAIpQLSf7D_n_nngrDrdUv3YM74zWuP4QDcICINwyC4maRgtLZD0kZg/viewform?usp=header"
+                                href="https://chat.whatsapp.com/HiIBVPYWfqk8A5Pm3X4Qpv"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 whileHover={{ scale: 1.03, boxShadow: "0 20px 50px -10px rgba(90, 122, 88, 0.4)" }}
@@ -178,7 +178,7 @@ const Professionals: React.FC = () => {
                     </Reveal>
                     <Reveal delay={0.2}>
                         <MotionA
-                            href="https://docs.google.com/forms/d/e/1FAIpQLSf7D_n_nngrDrdUv3YM74zWuP4QDcICINwyC4maRgtLZD0kZg/viewform?usp=header"
+                            href="https://chat.whatsapp.com/HiIBVPYWfqk8A5Pm3X4Qpv"
                             target="_blank"
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.03 }}
