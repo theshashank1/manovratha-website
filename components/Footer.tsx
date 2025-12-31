@@ -1,11 +1,7 @@
 import React from 'react';
-import { PageRoute } from '../types';
+import { Link } from 'react-router-dom';
 
-interface FooterProps {
-    onNavigate: (page: PageRoute) => void;
-}
-
-const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+const Footer: React.FC = () => {
     return (
         <div className="bg-brand-dark text-brand-light/80 pt-20 rounded-t-[3rem] md:rounded-t-[5rem] mt-12 relative z-10">
             <div className="max-w-7xl mx-auto px-6 md:px-12 pb-12">
@@ -55,19 +51,19 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                         <h4 className="font-bold text-white text-lg mb-8 tracking-wide">Explore</h4>
                         <ul className="space-y-6 text-base">
                             {[
-                                { label: 'For Professionals', route: 'professionals', icon: 'psychology' },
-                                { label: 'For Institutions', route: 'organizations', icon: 'corporate_fare' },
-                                { label: 'Wellness Hub', route: 'wellness', icon: 'self_improvement' },
-                                { label: 'Careers', route: 'careers', icon: 'work_history' }
+                                { label: 'For Professionals', route: '/professionals', icon: 'psychology' },
+                                { label: 'For Institutions', route: '/organizations', icon: 'corporate_fare' },
+                                { label: 'Wellness Hub', route: '/wellness', icon: 'self_improvement' },
+                                { label: 'Careers', route: '/careers', icon: 'work_history' }
                             ].map((item, idx) => (
                                 <li key={idx}>
-                                    <button
-                                        onClick={() => onNavigate(item.route as PageRoute)}
+                                    <Link
+                                        to={item.route}
                                         className="group flex items-center gap-3 hover:text-brand-primary transition-colors text-left w-full"
                                     >
                                         <span className="material-symbols-outlined text-xl text-brand-primary/60 group-hover:text-brand-primary transition-colors">{item.icon}</span>
                                         <span>{item.label}</span>
-                                    </button>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -77,18 +73,18 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                         <h4 className="font-bold text-white text-lg mb-8 tracking-wide">Support</h4>
                         <ul className="space-y-6 text-base">
                             {[
-                                { label: 'Contact Us', route: 'contact', icon: 'mail' },
-                                { label: 'FAQ', route: 'faq', icon: 'live_help' },
-                                { label: 'Privacy & Ethics', route: 'privacy', icon: 'gavel' }
+                                { label: 'Contact Us', route: '/contact', icon: 'mail' },
+                                { label: 'FAQ', route: '/faq', icon: 'live_help' },
+                                { label: 'Privacy & Ethics', route: '/privacy', icon: 'gavel' }
                             ].map((item, idx) => (
                                 <li key={idx}>
-                                    <button
-                                        onClick={() => onNavigate(item.route as PageRoute)}
+                                    <Link
+                                        to={item.route}
                                         className="group flex items-center gap-3 hover:text-brand-primary transition-colors text-left w-full"
                                     >
                                         <span className="material-symbols-outlined text-xl text-brand-primary/60 group-hover:text-brand-primary transition-colors">{item.icon}</span>
                                         <span>{item.label}</span>
-                                    </button>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>

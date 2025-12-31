@@ -1,72 +1,137 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
+import { HelmetProvider } from 'react-helmet-async';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
+import SEO from './components/SEO';
+
+// Pages
 import Home from './pages/Home';
 import About from './pages/About';
 import Professionals from './pages/Professionals';
 import Organizations from './pages/Organizations';
 import WellnessHub from './pages/WellnessHub';
-import Careers from './pages/Careers';
-import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
 import Privacy from './pages/Privacy';
-import { PageRoute } from './types';
-import { AnimatePresence, motion } from 'framer-motion';
 
-const MotionDiv = motion.div as any;
+// Utility for scroll to top on route change
+const ScrollToTop = () => {
+    const { pathname } = useLocation();
 
-export default function App() {
-  const [page, setPage] = useState<PageRoute>('home');
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [page]);
+    return null;
+};
 
-  const renderPage = () => {
-    switch (page) {
-      case 'home': return <Home onNavigate={setPage} />;
-      case 'about': return <About />;
-      case 'professionals': return <Professionals />;
-      case 'organizations': return <Organizations />;
-      case 'wellness': return <WellnessHub onNavigate={setPage} />;
-      case 'careers': return <Careers />;
-      case 'faq': return <FAQ />;
-      case 'contact': return <Contact />;
-      case 'privacy': return <Privacy />;
-      default: return <Home onNavigate={setPage} />;
-    }
-  };
-
-  return (
-    <div className="min-h-screen font-sans text-brand-dark bg-brand-surface flex flex-col">
-      <Header onNavigate={setPage} currentPage={page} />
-
-      <main className="flex-grow">
-        <AnimatePresence mode="wait">
-          <MotionDiv
-            key={page}
+const PageWrapper = ({ children }: { children: React.ReactNode }) => {
+    return (
+        <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.4 }}
-          >
-            {renderPage()}
-          </MotionDiv>
-        </AnimatePresence>
-      </main>
-
-      <Footer onNavigate={setPage} />
-
-      {/* Floating Action Button - Mobile optimized */}
-      {page !== 'contact' && (
-        <button
-          onClick={() => setPage('contact')}
-          className="fixed bottom-6 right-4 md:bottom-8 md:right-8 z-40 bg-brand-dark text-white p-4 md:p-4 rounded-full shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 safe-bottom group"
-          aria-label="Contact Us"
         >
-          <span className="material-symbols-outlined text-2xl md:text-2xl group-hover:animate-bounce">chat</span>
-        </button>
-      )}
-    </div>
-  );
+            {children}
+        </motion.div>
+    );
+};
+
+export default function App() {
+    return (
+        <HelmetProvider>
+            <Router>
+                <div className="min-h-screen font-sans text-brand-dark bg-brand-surface flex flex-col">
+                    <SEO
+                        title="Home"
+                        description="Manovratha - A holistic global mental health sanctuary connecting professionals, organizations, and individuals."
+                    />
+                    <ScrollToTop />
+                    <Header />
+
+                    <main className="flex-grow">
+                        <AnimatePresence mode="wait">
+                            <Routes>
+                                <Route path="/" element={
+                                    <PageWrapper>
+                                        <Home />
+                                    </PageWrapper>
+                                } />
+                                <Route path="/home" element={
+                                    <PageWrapper>
+                                        <Home />
+                                    </PageWrapper>
+                                } />
+                                <Route path="/about" element={
+                                    <PageWrapper>
+                                        <SEO title="About Us" description="Learn about Manovratha's mission to bridge the gap in mental healthcare." />
+                                        <About />
+                                    </PageWrapper>
+                                } />
+                                <Route path="/professionals" element={
+                                    <PageWrapper>
+                                        <SEO title="For Professionals" description="Join our network of mental health professionals for supervision, resources, and community." />
+                                        <Professionals />
+                                    </PageWrapper>
+                                } />
+                                <Route path="/organizations" element={
+                                    <PageWrapper>
+                                        <SEO title="For Organizations" description="Mental health solutions for schools, corporations, and healthcare institutions." />
+                                        <Organizations />
+                                    </PageWrapper>
+                                } />
+                                <Route path="/wellness" element={
+                                    <PageWrapper>
+                                        <SEO title="Wellness Lab" description="Explore our library of mental health resources, tools, and assessments." />
+                                        <WellnessHub />
+                                    </PageWrapper>
+                                } />
+                                <Route path="/contact" element={
+                                    <PageWrapper>
+                                        <SEO title="Contact Us" description="Get in touch with the Manovratha team." />
+                                        <Contact />
+                                    </PageWrapper>
+                                } />
+                                <Route path="/privacy" element={
+                                    <PageWrapper>
+                                        <SEO title="Privacy & Ethics" description="Learn about our commitment to privacy, ethics, and MHC Act 2017 compliance." />
+                                        <Privacy />
+                                    </PageWrapper>
+                                } />
+                                {/* Fallback */}
+                                <Route path="*" element={
+                                    <PageWrapper>
+                                        <Home />
+                                    </PageWrapper>
+                                } />
+                            </Routes>
+                        </AnimatePresence>
+                    </main>
+
+                    <Footer />
+
+                    {/* Floating Action Button - Mobile optimized */}
+                    <FloatingContactButton />
+                </div>
+            </Router>
+        </HelmetProvider>
+    );
+}
+
+const FloatingContactButton = () => {
+    const location = useLocation();
+    if (location.pathname === '/contact') return null;
+
+    return (
+        <a
+            href="/contact"
+            className="fixed bottom-6 right-4 md:bottom-8 md:right-8 z-40 bg-brand-dark text-white p-4 md:p-4 rounded-full shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 safe-bottom group"
+            aria-label="Contact Us"
+        >
+            <span className="material-symbols-outlined text-2xl md:text-2xl group-hover:animate-bounce">chat</span>
+        </a>
+    )
 }
