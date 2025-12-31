@@ -17,16 +17,22 @@ const Footer: React.FC = () => {
                         <div className="flex gap-4">
                             {[
                                 {
+                                    l: 'LinkedIn',
+                                    bg: 'hover:bg-[#0077b5]',
+                                    link: 'https://www.linkedin.com/company/manovratha/',
+                                    path: <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                },
+                                {
                                     l: 'Instagram',
                                     bg: 'hover:bg-pink-600',
-                                    link: 'https://instagram.com/manovratha',
+                                    link: 'https://www.instagram.com/manovratha/',
                                     path: <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M16.5,6.33A1.17,1.17 0 0,1 17.67,7.5C17.67,8.14 17.14,8.67 16.5,8.67A1.17,1.17 0 0,1 15.33,7.5A1.17,1.17 0 0,1 16.5,6.33Z" />
                                 },
                                 {
-                                    l: 'WhatsApp',
-                                    bg: 'hover:bg-green-600',
-                                    link: '#',
-                                    path: <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.8 7.37 7.5 3.67 12.05 3.67M9.53 7.32C9.32 7.32 8.97 7.32 8.67 7.32C8.36 7.32 7.85 7.44 7.65 7.66C7.44 7.88 6.88 8.41 6.88 9.48C6.88 10.55 7.65 11.6 7.85 11.89C8.06 12.18 9.4 14.26 11.45 15.15C13.49 16.03 13.91 15.86 14.35 15.86C14.8 15.86 15.8 15.3 16 14.73C16.2 14.16 16.2 13.67 16.14 13.57C16.08 13.47 15.93 13.41 15.71 13.3C15.49 13.19 14.41 12.66 14.2 12.56C14 12.46 13.85 12.41 13.7 12.63C13.56 12.85 13.13 13.37 13 13.53C12.87 13.68 12.74 13.71 12.53 13.6C12.31 13.49 11.62 13.26 10.8 12.53C10.15 11.95 9.71 11.24 9.59 11C9.46 10.8 9.58 10.66 9.69 10.55C9.79 10.45 9.9 10.29 10 10.16C10.12 10.04 10.16 9.95 10.23 9.8C10.3 9.66 10.26 9.54 10.2 9.42C10.15 9.3 9.76 8.35 9.6 7.97C9.43 7.6 9.27 7.64 9.14 7.64L9.53 7.32Z" />
+                                    l: 'X (Twitter)',
+                                    bg: 'hover:bg-black',
+                                    link: 'https://x.com/manovratha',
+                                    path: <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                                 },
                                 {
                                     l: 'Email',
@@ -54,16 +60,28 @@ const Footer: React.FC = () => {
                                 { label: 'For Professionals', route: '/professionals', icon: 'psychology' },
                                 { label: 'For Institutions', route: '/organizations', icon: 'corporate_fare' },
                                 { label: 'Wellness Hub', route: '/wellness', icon: 'self_improvement' },
-                                { label: 'Careers', route: '/careers', icon: 'work_history' }
+                                { label: 'Careers', route: 'https://www.linkedin.com/company/manovratha/jobs/', icon: 'work_history' }
                             ].map((item, idx) => (
                                 <li key={idx}>
-                                    <Link
-                                        to={item.route}
-                                        className="group flex items-center gap-3 hover:text-brand-primary transition-colors text-left w-full"
-                                    >
-                                        <span className="material-symbols-outlined text-xl text-brand-primary/60 group-hover:text-brand-primary transition-colors">{item.icon}</span>
-                                        <span>{item.label}</span>
-                                    </Link>
+                                    {item.route.startsWith('http') ? (
+                                        <a
+                                            href={item.route}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="group flex items-center gap-3 hover:text-brand-primary transition-colors text-left w-full"
+                                        >
+                                            <span className="material-symbols-outlined text-xl text-brand-primary/60 group-hover:text-brand-primary transition-colors">{item.icon}</span>
+                                            <span>{item.label}</span>
+                                        </a>
+                                    ) : (
+                                        <Link
+                                            to={item.route}
+                                            className="group flex items-center gap-3 hover:text-brand-primary transition-colors text-left w-full"
+                                        >
+                                            <span className="material-symbols-outlined text-xl text-brand-primary/60 group-hover:text-brand-primary transition-colors">{item.icon}</span>
+                                            <span>{item.label}</span>
+                                        </Link>
+                                    )}
                                 </li>
                             ))}
                         </ul>
