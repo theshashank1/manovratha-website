@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://manovratha.in/sitemap.xml

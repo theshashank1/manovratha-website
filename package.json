@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "tsc && vite build && node generate-sitemap.js",
+    "preview": "vite preview",
+    "generate-sitemap": "node generate-sitemap.js"
   },
   "dependencies": {
     "framer-motion": "^11.0.3",
