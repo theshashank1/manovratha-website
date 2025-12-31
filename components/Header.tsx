@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PageRoute, NavItem } from '../types';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 
 const MotionDiv = motion.div as any;
 const MotionButton = motion.button as any;
@@ -21,10 +21,36 @@ const navItems: NavItem[] = [
 const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { scrollY } = useScroll();
+
+  // Dynamic header transformations based on scroll - Floating Dock Effect
+  const headerWidth = useTransform(scrollY, [0, 50], ["100%", "92%"]);
+  const headerTop = useTransform(scrollY, [0, 50], ["0px", "16px"]);
+  const headerRadius = useTransform(scrollY, [0, 50], ["0px", "24px"]);
+  const headerBg = useTransform(
+    scrollY,
+    [0, 50],
+    ["rgba(243, 246, 244, 0.01)", "rgba(250, 250, 249, 0.92)"]
+  );
+  const headerBackdrop = useTransform(
+    scrollY,
+    [0, 50],
+    ["blur(0px)", "blur(16px)"]
+  );
+  const headerBorder = useTransform(
+    scrollY,
+    [0, 50],
+    ["rgba(90, 122, 88, 0)", "rgba(90, 122, 88, 0.15)"]
+  );
+  const headerShadow = useTransform(
+    scrollY,
+    [0, 50],
+    ["0px 0px 0px rgba(0,0,0,0)", "0px 10px 40px -10px rgba(26, 46, 34, 0.12)"]
+  );
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 30);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -37,111 +63,166 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-transparent ${scrolled
-            ? 'bg-white/80 backdrop-blur-xl shadow-sm py-3 border-white/20'
-            : 'bg-transparent py-6'
-          }`}
+      <MotionDiv
+        style={{
+          width: headerWidth,
+          marginTop: headerTop,
+          borderRadius: headerRadius,
+          backgroundColor: headerBg,
+          borderColor: headerBorder,
+          boxShadow: headerShadow,
+          backdropFilter: headerBackdrop,
+        }}
+        className="fixed top-0 left-0 right-0 z-50 mx-auto max-w-7xl border border-transparent transition-all duration-300 transform-gpu"
       >
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          {/* Logo */}
-          <div
+        <div className="px-6 py-4 flex justify-between items-center">
+          {/* Creative Logo */}
+          <motion.div
             onClick={() => handleNav('home')}
-            className="flex items-center gap-3 cursor-pointer group select-none"
+            className="flex items-center gap-3 cursor-pointer group select-none relative z-10"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <img src="/logo.svg" alt="Manovratha" className="w-10 h-10 md:w-12 md:h-12 object-contain" />
-            <span className={`font-display text-2xl md:text-3xl tracking-tight transition-colors ${scrolled ? 'text-brand-dark' : 'text-brand-dark'}`}>
-              Manovratha
-            </span>
-          </div>
-
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-2 bg-white/60 backdrop-blur-md px-2 py-2 rounded-full border border-white/40 shadow-sm">
-            {navItems.map((item) => (
-              <button
-                key={item.route}
-                onClick={() => handleNav(item.route)}
-                className={`relative px-5 py-2 rounded-full text-sm font-bold transition-all ${currentPage === item.route
-                    ? 'text-brand-dark'
-                    : 'text-brand-dark/60 hover:text-brand-dark hover:bg-white/50'
-                  }`}
+            <div className="relative">
+              <motion.img
+                src="/logo.svg"
+                alt="Manovratha"
+                className="w-10 h-10 md:w-11 md:h-11 object-contain"
+                animate={{ rotate: scrolled ? 360 : 0 }}
+                transition={{ duration: 0.8, ease: "backOut" }}
+              />
+              <div className="absolute inset-0 bg-brand-secondary/30 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-display text-xl md:text-2xl tracking-tight text-brand-dark leading-none">
+                Manovratha
+              </span>
+              <motion.span
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="text-[10px] text-brand-primary font-bold tracking-widest uppercase"
               >
-                {item.label}
-                {currentPage === item.route && (
-                  <motion.div
-                    layoutId="underline"
-                    className="absolute inset-0 bg-white rounded-full shadow-sm -z-10 border border-black/5"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-              </button>
-            ))}
-          </div>
+                Healing Minds
+              </motion.span>
+            </div>
+          </motion.div>
+
+          {/* Desktop Nav - Floating Glass Pill */}
+          <nav className="hidden lg:block absolute left-1/2 -translate-x-1/2">
+            <motion.div
+              className="px-1.5 py-1.5 bg-brand-light/5 backdrop-blur-md rounded-full border border-brand-primary/5 shadow-[inset_0_1px_4px_rgba(0,0,0,0.03),0_4px_12px_-4px_rgba(0,0,0,0.06)] flex items-center gap-1"
+              layout
+            >
+              {navItems.map((item) => (
+                <button
+                  key={item.route}
+                  onClick={() => handleNav(item.route)}
+                  className={`relative px-5 py-2.5 rounded-full text-sm font-semibold transition-colors duration-300 z-10 ${currentPage === item.route ? 'text-brand-dark' : 'text-brand-dark/70 hover:text-brand-dark'
+                    }`}
+                >
+                  <span className="relative z-10">{item.label}</span>
+                  {currentPage === item.route && (
+                    <motion.div
+                      layoutId="nav-bg"
+                      className="absolute inset-0 bg-white rounded-full shadow-[0_2px_10px_-2px_rgba(0,0,0,0.1)] border border-white/50"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  {/* Subtle hover effect for non-active items */}
+                  {currentPage !== item.route && (
+                    <motion.div
+                      className="absolute inset-0 bg-white/40 rounded-full opacity-0 hover:opacity-100 transition-opacity duration-200"
+                    />
+                  )}
+                </button>
+              ))}
+            </motion.div>
+          </nav>
 
           {/* Actions */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4 relative z-10">
             <MotionButton
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(26, 46, 34, 0.2)" }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleNav('contact')}
-              className="px-6 py-3 rounded-xl bg-brand-dark text-white font-bold text-sm hover:bg-brand-primary transition-colors shadow-lg shadow-brand-dark/20 flex items-center gap-2"
+              className="px-6 py-2.5 rounded-full bg-gradient-to-r from-brand-dark to-[#2C4A3B] text-white font-medium text-sm shadow-lg shadow-brand-dark/20 flex items-center gap-2 group overflow-hidden relative"
             >
-              Contact Us
-              <span className="material-symbols-outlined text-sm">arrow_outward</span>
+              <span className="relative z-10 flex items-center gap-2">
+                Let's Talk
+                <motion.span
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                  className="material-symbols-outlined text-sm"
+                >
+                  arrow_forward
+                </motion.span>
+              </span>
+              {/* Shine effect */}
+              <div className="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-12 group-hover:animate-[wiggle_1s_ease-in-out_infinite]" />
             </MotionButton>
           </div>
 
           {/* Mobile Toggle */}
-          <button
+          <MotionButton
+            whileTap={{ scale: 0.9 }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden w-12 h-12 flex items-center justify-center text-brand-dark bg-white/60 rounded-xl backdrop-blur-md border border-white/40 shadow-sm z-50 relative"
+            className="lg:hidden w-11 h-11 flex items-center justify-center text-brand-dark bg-white/50 rounded-full backdrop-blur-md border border-white/40 shadow-sm z-50 relative"
           >
-            <span className="material-symbols-outlined text-3xl transition-transform duration-300" style={{ transform: mobileMenuOpen ? 'rotate(90deg)' : 'none' }}>
-              {mobileMenuOpen ? 'close' : 'menu'}
+            <span className="material-symbols-outlined text-3xl">
+              {mobileMenuOpen ? 'close' : 'segment'}
             </span>
-          </button>
+          </MotionButton>
         </div>
-      </header>
+      </MotionDiv>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - Creative Curtain */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <MotionDiv
-            initial={{ opacity: 0, clipPath: "circle(0% at 100% 0%)" }}
-            animate={{ opacity: 1, clipPath: "circle(150% at 100% 0%)" }}
-            exit={{ opacity: 0, clipPath: "circle(0% at 100% 0%)" }}
+            initial={{ clipPath: "circle(0% at 100% 0%)" }}
+            animate={{ clipPath: "circle(150% at 100% 0%)" }}
+            exit={{ clipPath: "circle(0% at 100% 0%)" }}
             transition={{ type: "spring", stiffness: 30, damping: 15 }}
-            className="fixed inset-0 z-40 bg-white/95 backdrop-blur-2xl lg:hidden flex flex-col pt-32 px-8"
+            className="fixed inset-0 z-40 bg-[#F3F6F4] lg:hidden flex flex-col items-center justify-center overflow-hidden"
           >
-            <div className="flex flex-col gap-6">
+            {/* Background Decorations */}
+            <div className="absolute -top-40 -left-40 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-brand-secondary/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
+
+            <div className="flex flex-col gap-6 w-full max-w-md px-10 relative z-10">
               {navItems.map((item, i) => (
                 <MotionDiv
                   key={item.route}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + i * 0.1 }}
+                  initial={{ opacity: 0, y: 50, rotateX: -20 }}
+                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                  transition={{ delay: 0.1 + i * 0.1, type: "spring", stiffness: 100 }}
+                  className="perspective-1000"
                 >
                   <button
                     onClick={() => handleNav(item.route)}
-                    className={`text-4xl sm:text-5xl font-display text-left w-full transition-colors flex items-center justify-between group ${currentPage === item.route ? 'text-brand-primary' : 'text-brand-dark'}`}
+                    className={`text-5xl font-display text-center w-full transition-all duration-300 hover:scale-110 active:scale-95 ${currentPage === item.route ? 'text-brand-dark scale-105' : 'text-brand-dark/40 hover:text-brand-dark'
+                      }`}
                   >
                     {item.label}
-                    <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 -translate-x-10 group-hover:translate-x-0 transition-all duration-300">arrow_right_alt</span>
                   </button>
                 </MotionDiv>
               ))}
-              <div className="h-px bg-gray-200 w-full my-4"></div>
+
               <MotionDiv
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.6 }}
+                className="mt-8"
               >
                 <button
                   onClick={() => handleNav('contact')}
-                  className="w-full text-xl font-bold text-white bg-brand-dark p-5 rounded-2xl shadow-xl flex justify-between items-center active:scale-95 transition-transform"
+                  className="w-full text-xl font-bold text-white bg-brand-dark py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all active:scale-95 flex items-center justify-center gap-3 overflow-hidden relative group"
                 >
-                  Contact Us
-                  <span className="material-symbols-outlined">arrow_forward</span>
+                  <span className="relative z-10 flex items-center gap-2">
+                    Start Your Journey
+                    <span className="material-symbols-outlined group-hover:translate-y-1 transition-transform">arrow_downward</span>
+                  </span>
+                  <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 </button>
               </MotionDiv>
             </div>
