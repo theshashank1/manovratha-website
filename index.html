@@ -2,13 +2,55 @@
 <html lang="en">
 
 <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) - Enhanced Configuration -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XZ652LQP5"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        gtag('config', 'G-1XZ652LQP5');
+        gtag('config', 'G-1XZ652LQP5', {
+            // Enhanced measurement settings
+            send_page_view: true,
+            // Track outbound links automatically
+            link_attribution: true,
+            // Enhanced ecommerce (for future use)
+            allow_google_signals: true,
+            allow_ad_personalization_signals: false
+        });
+
+        // Track scroll depth
+        let scrollDepths = [25, 50, 75, 90];
+        let scrollTracked = [];
+        window.addEventListener('scroll', function () {
+            let scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+            scrollDepths.forEach(function (depth) {
+                if (scrollPercent >= depth && !scrollTracked.includes(depth)) {
+                    scrollTracked.push(depth);
+                    gtag('event', 'scroll_depth', { 'depth': depth + '%', 'page': window.location.pathname });
+                }
+            });
+        });
+
+        // Track outbound link clicks
+        document.addEventListener('click', function (e) {
+            let link = e.target.closest('a');
+            if (link && link.href && link.hostname !== window.location.hostname) {
+                gtag('event', 'outbound_click', {
+                    'link_url': link.href,
+                    'link_text': link.innerText || link.textContent,
+                    'page': window.location.pathname
+                });
+            }
+        });
+    </script>
+
+    <!-- Microsoft Clarity - Heatmaps & Session Recordings -->
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "uuhn2izeu2");
     </script>
 
     <meta charset="utf-8" />
