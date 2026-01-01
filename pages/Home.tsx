@@ -143,7 +143,7 @@ const Home: React.FC = () => {
                                     className="bg-[#F8FAF8] p-6 md:p-8 rounded-2xl md:rounded-3xl transition-all cursor-default h-full"
                                 >
                                     <span className="material-symbols-outlined text-[#6B8E5E] text-3xl md:text-4xl mb-3 md:mb-4">{item.icon}</span>
-                                    <h4 className="font-bold text-lg md:text-xl text-brand-dark mb-2 md:mb-3">{item.t}</h4>
+                                    <h3 className="font-bold text-lg md:text-xl text-brand-dark mb-2 md:mb-3">{item.t}</h3>
                                     <p className="text-sm md:text-base text-brand-dark/70 leading-relaxed">{item.d}</p>
                                 </MotionDiv>
                             </Reveal>

@@ -305,7 +305,7 @@ const MSEFocus = ({ onClose }: { onClose: () => void }) => {
             <div className="flex-grow overflow-y-auto custom-scrollbar pr-2 md:pr-4 space-y-6 md:space-y-8 pb-10">
                 {categories.map((cat) => (
                     <div key={cat.id} className="">
-                        <h4 className="font-bold text-brand-dark mb-3 md:mb-4 text-xs uppercase tracking-widest border-l-4 border-brand-primary pl-3">{cat.label}</h4>
+                        <h3 className="font-bold text-brand-dark mb-3 md:mb-4 text-xs uppercase tracking-widest border-l-4 border-brand-primary pl-3">{cat.label}</h3>
                         <div className="flex flex-wrap gap-2 md:gap-3">
                             {cat.options.map((opt) => (
                                 <button
@@ -849,7 +849,7 @@ const WellnessHub: React.FC = () => {
                 <Reveal>
                     <div className="bg-white rounded-[2rem] md:rounded-[3rem] p-8 md:p-14 border-l-8 border-brand-primary shadow-soft flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12 text-center lg:text-left">
                         <div>
-                            <h4 className="font-display text-2xl md:text-3xl text-brand-dark mb-4">Academic & Clinical Partners</h4>
+                            <h3 className="font-display text-2xl md:text-3xl text-brand-dark mb-4">Academic & Clinical Partners</h3>
                             <p className="text-brand-dark/70 max-w-2xl leading-relaxed text-base md:text-lg">
                                 These tools are designed to support, not replace, clinical judgment. We are actively collaborating with institutions to validate and expand this suite.
                             </p>

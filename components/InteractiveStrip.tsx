@@ -8,10 +8,10 @@ const MotionDiv = motion.div as any;
 const MotionButton = motion.button as any;
 
 const weatherOptions: WeatherOption[] = [
-  { id: 'heavy', label: 'Heavy', icon: 'thunderstorm', bgColorClass: 'bg-blue-100', textColorClass: 'text-blue-600' },
-  { id: 'cloudy', label: 'Cloudy', icon: 'cloud', bgColorClass: 'bg-gray-100', textColorClass: 'text-gray-600' },
-  { id: 'shining', label: 'Shining', icon: 'light_mode', bgColorClass: 'bg-yellow-100', textColorClass: 'text-yellow-600' },
-  { id: 'clear', label: 'Clear', icon: 'wb_twilight', bgColorClass: 'bg-orange-100', textColorClass: 'text-orange-600' },
+    { id: 'heavy', label: 'Heavy', icon: 'thunderstorm', bgColorClass: 'bg-blue-100', textColorClass: 'text-blue-600' },
+    { id: 'cloudy', label: 'Cloudy', icon: 'cloud', bgColorClass: 'bg-gray-100', textColorClass: 'text-gray-600' },
+    { id: 'shining', label: 'Shining', icon: 'light_mode', bgColorClass: 'bg-yellow-100', textColorClass: 'text-yellow-600' },
+    { id: 'clear', label: 'Clear', icon: 'wb_twilight', bgColorClass: 'bg-orange-100', textColorClass: 'text-orange-600' },
 ];
 
 const InteractiveStrip: React.FC = () => {
@@ -27,7 +27,7 @@ const InteractiveStrip: React.FC = () => {
         <section className="py-12 md:py-16 px-4">
             <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 md:gap-10 items-stretch">
                 {/* Mood Check Component */}
-                <MotionDiv 
+                <MotionDiv
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6 }}
@@ -35,16 +35,16 @@ const InteractiveStrip: React.FC = () => {
                 >
                     <div className="relative z-10">
                         <span className="bg-accent-rose/30 text-[#9F1239] px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 inline-block">Daily Check-in</span>
-                        <h3 className="font-display text-3xl md:text-4xl text-brand-dark mb-3 md:mb-4">How are you feeling?</h3>
+                        <h2 className="font-display text-3xl md:text-4xl text-brand-dark mb-3 md:mb-4">How are you feeling?</h2>
                         <p className="text-brand-dark/70 text-lg md:text-xl mb-8 md:mb-12 font-medium">Take a playful pause to register your inner weather.</p>
-                        
+
                         <div className="flex flex-wrap justify-center sm:justify-between gap-4 mb-6 md:mb-8">
                             {weatherOptions.map((w, index) => (
-                                <MotionButton 
-                                    key={w.id} 
+                                <MotionButton
+                                    key={w.id}
                                     onClick={() => handleMoodSelect(w.id)}
                                     // Subtle floating animation for each icon
-                                    animate={{ 
+                                    animate={{
                                         y: mood === w.id ? -10 : [0, -5, 0],
                                         scale: mood === w.id ? 1.15 : 1
                                     }}
@@ -67,7 +67,7 @@ const InteractiveStrip: React.FC = () => {
 
                     <AnimatePresence>
                         {showPrompt && (
-                            <MotionDiv 
+                            <MotionDiv
                                 initial={{ opacity: 0, height: 0, y: 20 }}
                                 animate={{ opacity: 1, height: "auto", y: 0 }}
                                 exit={{ opacity: 0, height: 0 }}
@@ -75,15 +75,15 @@ const InteractiveStrip: React.FC = () => {
                                 className="bg-[#E8F0E6] p-4 md:p-6 rounded-3xl border border-brand-primary/20 overflow-hidden relative z-10"
                             >
                                 <p className="text-brand-dark font-medium text-base md:text-lg text-center leading-relaxed">
-                                    Thank you for checking in. <br/>
+                                    Thank you for checking in. <br />
                                     <span className="text-[#6B8E5E] font-bold text-lg md:text-xl block mt-2">Try the breathing exercise next to center yourself →</span>
                                 </p>
                             </MotionDiv>
                         )}
                     </AnimatePresence>
-                    
+
                     {/* Background blob for organic feel */}
-                    <MotionDiv 
+                    <MotionDiv
                         animate={{ scale: [1, 1.2, 1], rotate: [0, 10, 0] }}
                         transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
                         className="absolute -bottom-20 -left-20 w-64 h-64 bg-accent-sun/20 rounded-full blur-3xl pointer-events-none"
@@ -91,7 +91,7 @@ const InteractiveStrip: React.FC = () => {
                 </MotionDiv>
 
                 {/* Breathing Component */}
-                <MotionDiv 
+                <MotionDiv
                     layout
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -100,7 +100,7 @@ const InteractiveStrip: React.FC = () => {
                 >
                     <AnimatePresence>
                         {showPrompt && (
-                            <MotionDiv 
+                            <MotionDiv
                                 initial={{ opacity: 0, scale: 0, y: 10, x: 20 }}
                                 animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
                                 exit={{ opacity: 0, scale: 0 }}

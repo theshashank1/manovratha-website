@@ -76,24 +76,39 @@ const Professionals: React.FC = () => {
 
                     <Reveal delay={0.3}>
                         {/* Single Primary CTA - Dominant & Clear */}
-                        <div className="flex flex-col items-center gap-4">
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
                             <MotionA
-                                href="https://chat.whatsapp.com/HiIBVPYWfqk8A5Pm3X4Qpv"
+                                href="https://docs.google.com/forms/d/e/1FAIpQLSf7D_n_nngrDrdUv3YM74zWuP4QDcICINwyC4maRgtLZD0kZg/viewform?usp=header"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 whileHover={{ scale: 1.03, boxShadow: "0 20px 50px -10px rgba(90, 122, 88, 0.4)" }}
                                 whileTap={{ scale: 0.98 }}
-                                className="inline-flex items-center gap-3 bg-gradient-to-r from-brand-primary to-[#4A6A48] text-white px-10 py-5 rounded-full font-bold text-lg md:text-xl shadow-lg shadow-brand-primary/30 transition-all duration-300 group"
+                                className="inline-flex items-center gap-3 bg-gradient-to-r from-brand-primary to-[#4A6A48] text-white px-8 py-4 md:px-10 md:py-5 rounded-full font-bold text-lg md:text-xl shadow-lg shadow-brand-primary/30 transition-all duration-300 group w-full md:w-auto justify-center"
                             >
-                                <span>Join the Professional Network</span>
+                                <span>Join as Professional</span>
                                 <motion.span
                                     className="material-symbols-outlined text-2xl"
                                     animate={{ x: [0, 4, 0] }}
                                     transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                                    aria-hidden="true"
                                 >
                                     arrow_forward
                                 </motion.span>
                             </MotionA>
+
+                            <MotionA
+                                href="https://chat.whatsapp.com/HiIBVPYWfqk8A5Pm3X4Qpv"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                whileHover={{ scale: 1.03 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="inline-flex items-center gap-3 bg-white text-brand-dark border-2 border-brand-light hover:border-brand-primary px-8 py-4 md:px-10 md:py-5 rounded-full font-bold text-lg md:text-xl shadow-sm hover:shadow-md transition-all duration-300 group w-full md:w-auto justify-center"
+                            >
+                                <span>Join the Network</span>
+                                <span className="material-symbols-outlined text-2xl" aria-hidden="true">groups</span>
+                            </MotionA>
+                        </div>
+                        <div className="mt-6 flex flex-col items-center gap-1">
                             <span className="text-sm text-brand-dark/50 font-medium">Free to join • No commitment required</span>
                         </div>
                     </Reveal>
@@ -178,14 +193,14 @@ const Professionals: React.FC = () => {
                     </Reveal>
                     <Reveal delay={0.2}>
                         <MotionA
-                            href="https://chat.whatsapp.com/HiIBVPYWfqk8A5Pm3X4Qpv"
+                            href="https://docs.google.com/forms/d/e/1FAIpQLSf7D_n_nngrDrdUv3YM74zWuP4QDcICINwyC4maRgtLZD0kZg/viewform?usp=header"
                             target="_blank"
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.98 }}
                             className="inline-flex items-center gap-3 bg-brand-dark text-white px-10 py-5 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                         >
-                            <span>Get Started — It's Free</span>
+                            <span>Join as Professional</span>
                             <span className="material-symbols-outlined text-xl">arrow_forward</span>
                         </MotionA>
                     </Reveal>
