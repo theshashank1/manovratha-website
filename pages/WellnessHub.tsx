@@ -830,7 +830,7 @@ const WellnessHub: React.FC = () => {
 
                             <Reveal delay={0.2}>
                                 <LabCard
-                                    title="Respiration"
+                                    title="Take a Breath"
                                     icon="air"
                                     badge="Physiology"
                                     badgeColor="bg-sky-600 text-white"
