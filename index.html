@@ -9,16 +9,13 @@
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-1XZ652LQP5', {
-            // Enhanced measurement settings
             send_page_view: true,
-            // Track outbound links automatically
             link_attribution: true,
-            // Enhanced ecommerce (for future use)
             allow_google_signals: true,
             allow_ad_personalization_signals: false
         });
 
-        // Track scroll depth
+        // ========== SCROLL DEPTH TRACKING ==========
         let scrollDepths = [25, 50, 75, 90];
         let scrollTracked = [];
         window.addEventListener('scroll', function () {
@@ -31,17 +28,101 @@
             });
         });
 
-        // Track outbound link clicks
+        // ========== CTA BUTTON CLICK TRACKING ==========
         document.addEventListener('click', function (e) {
-            let link = e.target.closest('a');
-            if (link && link.href && link.hostname !== window.location.hostname) {
-                gtag('event', 'outbound_click', {
-                    'link_url': link.href,
-                    'link_text': link.innerText || link.textContent,
-                    'page': window.location.pathname
-                });
+            let button = e.target.closest('a, button');
+            if (button) {
+                let buttonText = (button.innerText || button.textContent || '').trim().substring(0, 50);
+                let isExternal = button.href && button.hostname !== window.location.hostname;
+
+                // Track all CTA buttons
+                if (buttonText) {
+                    gtag('event', 'cta_click', {
+                        'button_text': buttonText,
+                        'button_url': button.href || 'no-href',
+                        'page': window.location.pathname,
+                        'is_external': isExternal
+                    });
+                }
+
+                // Track specific conversion goals
+                let lowerText = buttonText.toLowerCase();
+                if (lowerText.includes('join as professional') || lowerText.includes('partner with us')) {
+                    gtag('event', 'conversion_intent', { 'type': 'professional_signup', 'page': window.location.pathname });
+                }
+                if (lowerText.includes('join the network') || lowerText.includes('join the community') || lowerText.includes('whatsapp')) {
+                    gtag('event', 'conversion_intent', { 'type': 'community_join', 'page': window.location.pathname });
+                }
+                if (lowerText.includes('contact') || lowerText.includes("let's talk")) {
+                    gtag('event', 'conversion_intent', { 'type': 'contact_intent', 'page': window.location.pathname });
+                }
+
+                // Track Google Form clicks
+                if (button.href && button.href.includes('docs.google.com/forms')) {
+                    gtag('event', 'form_click', { 'form_url': button.href, 'page': window.location.pathname });
+                }
+
+                // Track WhatsApp clicks
+                if (button.href && button.href.includes('chat.whatsapp.com')) {
+                    gtag('event', 'whatsapp_click', { 'page': window.location.pathname });
+                }
+
+                // Track outbound links
+                if (isExternal) {
+                    gtag('event', 'outbound_click', {
+                        'link_url': button.href,
+                        'link_text': buttonText,
+                        'page': window.location.pathname
+                    });
+                }
             }
         });
+
+        // ========== PAGE PERFORMANCE TRACKING ==========
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                if (window.performance) {
+                    let timing = performance.getEntriesByType('navigation')[0];
+                    if (timing) {
+                        gtag('event', 'page_performance', {
+                            'page': window.location.pathname,
+                            'load_time': Math.round(timing.loadEventEnd - timing.startTime),
+                            'dom_interactive': Math.round(timing.domInteractive - timing.startTime),
+                            'first_byte': Math.round(timing.responseStart - timing.startTime)
+                        });
+                    }
+                }
+            }, 0);
+        });
+
+        // ========== TIME ON PAGE TRACKING ==========
+        let pageStartTime = Date.now();
+        let timeIntervals = [30, 60, 120, 300]; // seconds
+        let timeTracked = [];
+        setInterval(function () {
+            let timeOnPage = Math.round((Date.now() - pageStartTime) / 1000);
+            timeIntervals.forEach(function (interval) {
+                if (timeOnPage >= interval && !timeTracked.includes(interval)) {
+                    timeTracked.push(interval);
+                    gtag('event', 'time_on_page', { 'seconds': interval, 'page': window.location.pathname });
+                }
+            });
+        }, 5000);
+
+        // ========== PAGE VIEW FUNNEL TRACKING ==========
+        let currentPage = window.location.pathname;
+        let pageFunnelMap = {
+            '/': 'home',
+            '/home': 'home',
+            '/about': 'about',
+            '/professionals': 'professionals',
+            '/organizations': 'organizations',
+            '/wellness': 'wellness',
+            '/contact': 'contact'
+        };
+        if (pageFunnelMap[currentPage]) {
+            gtag('event', 'funnel_step', { 'step': pageFunnelMap[currentPage], 'page': currentPage });
+        }
     </script>
 
     <!-- Microsoft Clarity - Heatmaps & Session Recordings -->
