@@ -110,7 +110,7 @@ const Footer: React.FC = () => {
                 </div>
 
                 <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-brand-light/70">
-                    <p>© 2023 Manovratha Pvt Ltd.</p>
+                    <p>© 2023 Manovratha Mental Health Services.</p>
                     <div className="flex gap-6">
                         <span>Made with ❤️ in India</span>
                         <span>MHC Act 2017 Compliant</span>
