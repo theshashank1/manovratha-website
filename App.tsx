@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { HelmetProvider } from 'react-helmet-async';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -44,102 +43,98 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => {
 
 export default function App() {
     return (
-        <HelmetProvider>
-            <Router>
-                <div className="min-h-screen font-sans text-brand-dark bg-brand-surface flex flex-col">
-                    <SEO
-                        title="Home"
-                        description="Manovratha - A holistic global mental health sanctuary connecting professionals, organizations, and individuals."
-                    />
-                    <ScrollToTop />
-                    <Header />
+        <div className="min-h-screen font-sans text-brand-dark bg-brand-surface flex flex-col">
+            <SEO
+                title="Home"
+                description="Manovratha - A holistic global mental health sanctuary connecting professionals, organizations, and individuals."
+            />
+            <ScrollToTop />
+            <Header />
 
-                    <main className="flex-grow">
-                        <AnimatePresence mode="wait">
-                            <Routes>
-                                <Route path="/" element={
-                                    <PageWrapper>
-                                        <Home />
-                                    </PageWrapper>
-                                } />
-                                <Route path="/home" element={
-                                    <PageWrapper>
-                                        <Home />
-                                    </PageWrapper>
-                                } />
-                                <Route path="/about" element={
-                                    <PageWrapper>
-                                        <SEO title="About Us" description="Learn about Manovratha's mission to bridge the gap in mental healthcare." />
-                                        <About />
-                                    </PageWrapper>
-                                } />
-                                <Route path="/professionals" element={
-                                    <PageWrapper>
-                                        <SEO title="For Professionals" description="Join our network of mental health professionals for supervision, resources, and community." />
-                                        <Professionals />
-                                    </PageWrapper>
-                                } />
-                                <Route path="/organizations" element={
-                                    <PageWrapper>
-                                        <SEO title="For Organizations" description="Mental health solutions for schools, corporations, and healthcare institutions." />
-                                        <Organizations />
-                                    </PageWrapper>
-                                } />
-                                <Route path="/wellness" element={
-                                    <PageWrapper>
-                                        <SEO title="Wellness Lab" description="Explore our library of mental health resources, tools, and assessments." />
-                                        <WellnessHub />
-                                    </PageWrapper>
-                                } />
-                                <Route path="/contact" element={
-                                    <PageWrapper>
-                                        <SEO title="Contact Us" description="Get in touch with the Manovratha team." />
-                                        <Contact />
-                                    </PageWrapper>
-                                } />
-                                <Route path="/privacy" element={
-                                    <PageWrapper>
-                                        <SEO title="Privacy & Ethics" description="Learn about our commitment to privacy, ethics, and MHC Act 2017 compliance." />
-                                        <Privacy />
-                                    </PageWrapper>
-                                } />
-                                <Route path="/faq" element={
-                                    <PageWrapper>
-                                        <SEO
-                                            title="FAQ"
-                                            description="Frequently asked questions about Manovratha's mental health services for individuals, professionals, and institutions."
-                                            keywords="mental health FAQ, therapy questions, counseling help, Manovratha support"
-                                        />
-                                        <FAQ />
-                                    </PageWrapper>
-                                } />
-                                <Route path="/careers" element={
-                                    <PageWrapper>
-                                        <SEO
-                                            title="Careers"
-                                            description="Join Manovratha's mission to transform mental healthcare. Explore career opportunities for mental health professionals, researchers, and tech innovators."
-                                            keywords="mental health careers, psychology jobs, counselor jobs India, Manovratha careers"
-                                        />
-                                        <Careers />
-                                    </PageWrapper>
-                                } />
-                                {/* Fallback */}
-                                <Route path="*" element={
-                                    <PageWrapper>
-                                        <Home />
-                                    </PageWrapper>
-                                } />
-                            </Routes>
-                        </AnimatePresence>
-                    </main>
+            <main className="flex-grow">
+                <AnimatePresence mode="wait">
+                    <Routes>
+                        <Route path="/" element={
+                            <PageWrapper>
+                                <Home />
+                            </PageWrapper>
+                        } />
+                        <Route path="/home" element={
+                            <PageWrapper>
+                                <Home />
+                            </PageWrapper>
+                        } />
+                        <Route path="/about" element={
+                            <PageWrapper>
+                                <SEO title="About Us" description="Learn about Manovratha's mission to bridge the gap in mental healthcare." />
+                                <About />
+                            </PageWrapper>
+                        } />
+                        <Route path="/professionals" element={
+                            <PageWrapper>
+                                <SEO title="For Professionals" description="Join our network of mental health professionals for supervision, resources, and community." />
+                                <Professionals />
+                            </PageWrapper>
+                        } />
+                        <Route path="/organizations" element={
+                            <PageWrapper>
+                                <SEO title="For Organizations" description="Mental health solutions for schools, corporations, and healthcare institutions." />
+                                <Organizations />
+                            </PageWrapper>
+                        } />
+                        <Route path="/wellness" element={
+                            <PageWrapper>
+                                <SEO title="Wellness Lab" description="Explore our library of mental health resources, tools, and assessments." />
+                                <WellnessHub />
+                            </PageWrapper>
+                        } />
+                        <Route path="/contact" element={
+                            <PageWrapper>
+                                <SEO title="Contact Us" description="Get in touch with the Manovratha team." />
+                                <Contact />
+                            </PageWrapper>
+                        } />
+                        <Route path="/privacy" element={
+                            <PageWrapper>
+                                <SEO title="Privacy & Ethics" description="Learn about our commitment to privacy, ethics, and MHC Act 2017 compliance." />
+                                <Privacy />
+                            </PageWrapper>
+                        } />
+                        <Route path="/faq" element={
+                            <PageWrapper>
+                                <SEO
+                                    title="FAQ"
+                                    description="Frequently asked questions about Manovratha's mental health services for individuals, professionals, and institutions."
+                                    keywords="mental health FAQ, therapy questions, counseling help, Manovratha support"
+                                />
+                                <FAQ />
+                            </PageWrapper>
+                        } />
+                        <Route path="/careers" element={
+                            <PageWrapper>
+                                <SEO
+                                    title="Careers"
+                                    description="Join Manovratha's mission to transform mental healthcare. Explore career opportunities for mental health professionals, researchers, and tech innovators."
+                                    keywords="mental health careers, psychology jobs, counselor jobs India, Manovratha careers"
+                                />
+                                <Careers />
+                            </PageWrapper>
+                        } />
+                        {/* Fallback */}
+                        <Route path="*" element={
+                            <PageWrapper>
+                                <Home />
+                            </PageWrapper>
+                        } />
+                    </Routes>
+                </AnimatePresence>
+            </main>
 
-                    <Footer />
+            <Footer />
 
-                    {/* Floating Action Button - Mobile optimized */}
-                    <FloatingContactButton />
-                </div>
-            </Router>
-        </HelmetProvider>
+            {/* Floating Action Button - Mobile optimized */}
+            <FloatingContactButton />
+        </div>
     );
 }
 
