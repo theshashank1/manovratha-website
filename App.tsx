@@ -15,6 +15,8 @@ import Organizations from './pages/Organizations';
 import WellnessHub from './pages/WellnessHub';
 import Contact from './pages/Contact';
 import Privacy from './pages/Privacy';
+import FAQ from './pages/FAQ';
+import Careers from './pages/Careers';
 
 // Utility for scroll to top on route change
 const ScrollToTop = () => {
@@ -99,6 +101,26 @@ export default function App() {
                                     <PageWrapper>
                                         <SEO title="Privacy & Ethics" description="Learn about our commitment to privacy, ethics, and MHC Act 2017 compliance." />
                                         <Privacy />
+                                    </PageWrapper>
+                                } />
+                                <Route path="/faq" element={
+                                    <PageWrapper>
+                                        <SEO
+                                            title="FAQ"
+                                            description="Frequently asked questions about Manovratha's mental health services for individuals, professionals, and institutions."
+                                            keywords="mental health FAQ, therapy questions, counseling help, Manovratha support"
+                                        />
+                                        <FAQ />
+                                    </PageWrapper>
+                                } />
+                                <Route path="/careers" element={
+                                    <PageWrapper>
+                                        <SEO
+                                            title="Careers"
+                                            description="Join Manovratha's mission to transform mental healthcare. Explore career opportunities for mental health professionals, researchers, and tech innovators."
+                                            keywords="mental health careers, psychology jobs, counselor jobs India, Manovratha careers"
+                                        />
+                                        <Careers />
                                     </PageWrapper>
                                 } />
                                 {/* Fallback */}
