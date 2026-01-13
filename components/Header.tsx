@@ -73,13 +73,13 @@ const Header: React.FC = () => {
           boxShadow: headerShadow,
           backdropFilter: headerBackdrop,
         }}
-        className="fixed top-0 left-0 right-0 z-50 mx-auto max-w-7xl border border-transparent transition-all duration-300 transform-gpu"
+        className="fixed top-0 left-0 right-0 z-50 mx-auto max-w-7xl border border-transparent transition-all duration-300 transform-gpu safe-top"
       >
-        <div className="px-6 py-4 flex justify-between items-center">
+        <div className="px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
           {/* Creative Logo */}
-          <Link to="/">
+          <Link to="/" className="shrink-0">
             <motion.div
-              className="flex items-center gap-3 cursor-pointer group select-none relative z-10"
+              className="flex items-center gap-2 sm:gap-3 cursor-pointer group select-none relative z-10"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -87,20 +87,20 @@ const Header: React.FC = () => {
                 <motion.img
                   src="/logo.svg"
                   alt="Manovratha"
-                  className="w-10 h-10 md:w-11 md:h-11 object-contain"
+                  className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 object-contain"
                   animate={{ rotate: scrolled ? 360 : 0 }}
                   transition={{ duration: 0.8, ease: "backOut" }}
                 />
                 <div className="absolute inset-0 bg-brand-secondary/30 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
               <div className="flex flex-col">
-                <span className="font-display text-xl md:text-2xl tracking-tight text-brand-dark leading-none">
+                <span className="font-display text-lg sm:text-xl md:text-2xl tracking-tight text-brand-dark leading-none">
                   Manovratha
                 </span>
                 <motion.span
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="text-[10px] text-brand-primary font-bold tracking-widest uppercase"
+                  className="text-[9px] sm:text-[10px] text-brand-primary font-bold tracking-widest uppercase"
                 >
                   Healing Minds
                 </motion.span>
@@ -171,9 +171,10 @@ const Header: React.FC = () => {
           <MotionButton
             whileTap={{ scale: 0.9 }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden w-11 h-11 flex items-center justify-center text-brand-dark bg-white/50 rounded-full backdrop-blur-md border border-white/40 shadow-sm z-50 relative"
+            className="lg:hidden w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center text-brand-dark bg-white/50 rounded-full backdrop-blur-md border border-white/40 shadow-sm z-50 relative"
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
-            <span className="material-symbols-outlined text-3xl">
+            <span className="material-symbols-outlined text-2xl sm:text-3xl">
               {mobileMenuOpen ? 'close' : 'segment'}
             </span>
           </MotionButton>
@@ -194,7 +195,7 @@ const Header: React.FC = () => {
             <div className="absolute -top-40 -left-40 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl animate-pulse" />
             <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-brand-secondary/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
 
-            <div className="flex flex-col gap-6 w-full max-w-md px-10 relative z-10">
+            <div className="flex flex-col gap-4 sm:gap-6 w-full max-w-md px-6 sm:px-10 relative z-10">
               {navItems.map((item, i) => (
                 <MotionDiv
                   key={item.route}
@@ -206,7 +207,7 @@ const Header: React.FC = () => {
                   <Link
                     to={`/${item.route === 'home' ? '' : item.route}`}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`block text-5xl font-display text-center w-full transition-all duration-300 hover:scale-110 active:scale-95 ${isActive(item.route) ? 'text-brand-dark scale-105' : 'text-brand-dark/40 hover:text-brand-dark'
+                    className={`block text-4xl sm:text-5xl font-display text-center w-full transition-all duration-300 hover:scale-110 active:scale-95 ${isActive(item.route) ? 'text-brand-dark scale-105' : 'text-brand-dark/40 hover:text-brand-dark'
                       }`}
                   >
                     {item.label}
@@ -218,10 +219,10 @@ const Header: React.FC = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.6 }}
-                className="mt-8"
+                className="mt-6 sm:mt-8"
               >
                 <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
-                  <div className="w-full text-xl font-bold text-white bg-brand-dark py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all active:scale-95 flex items-center justify-center gap-3 overflow-hidden relative group">
+                  <div className="w-full text-lg sm:text-xl font-bold text-white bg-brand-dark py-3 sm:py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all active:scale-95 flex items-center justify-center gap-3 overflow-hidden relative group">
                     <span className="relative z-10 flex items-center gap-2">
                       Start Your Journey
                       <span className="material-symbols-outlined group-hover:translate-y-1 transition-transform">arrow_downward</span>

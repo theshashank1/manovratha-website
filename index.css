@@ -16,6 +16,14 @@
   /* Prevent horizontal scroll on mobile */
   body {
     overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Ensure proper text rendering on mobile */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 }
 
@@ -42,11 +50,38 @@
 
   /* Safe area padding for notched phones */
   .safe-bottom {
-    padding-bottom: env(safe-area-inset-bottom, 0);
+    padding-bottom: max(env(safe-area-inset-bottom, 0), 1rem);
   }
 
   .safe-top {
-    padding-top: env(safe-area-inset-top, 0);
+    padding-top: max(env(safe-area-inset-top, 0), 1rem);
+  }
+
+  /* Prevent layout shift */
+  .aspect-ratio-box {
+    position: relative;
+    width: 100%;
+  }
+
+  .aspect-ratio-box::before {
+    content: '';
+    display: block;
+    padding-bottom: calc(var(--aspect-ratio, 1) * 100%);
+  }
+
+  /* Mobile-optimized spacing */
+  @media (max-width: 640px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+  /* Fix for iOS Safari bottom bar */
+  @supports (-webkit-touch-callout: none) {
+    .min-h-screen {
+      min-height: -webkit-fill-available;
+    }
   }
 }
 
@@ -77,5 +112,36 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Fix for mobile viewport height issues */
+@supports (height: 100dvh) {
+  .min-h-screen {
+    min-height: 100dvh;
+  }
+}
+
+/* Improve touch scrolling on iOS */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent text size adjustment on iOS */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Fix for Safari flexbox issues */
+@media (max-width: 768px) {
+  .flex {
+    min-width: 0;
+  }
+}
+
+/* Better font rendering */
+@media (max-width: 640px) {
+  body {
+    font-size: 16px; /* Prevent zoom on input focus in iOS */
   }
 }

@@ -145,10 +145,10 @@ const FloatingContactButton = () => {
     return (
         <a
             href="/contact"
-            className="fixed bottom-6 right-4 md:bottom-8 md:right-8 z-40 bg-brand-dark text-white p-4 md:p-4 rounded-full shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 safe-bottom group"
+            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 z-40 bg-brand-dark text-white p-3 sm:p-4 rounded-full shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 safe-bottom group"
             aria-label="Contact Us"
         >
-            <span className="material-symbols-outlined text-2xl md:text-2xl group-hover:animate-bounce">chat</span>
+            <span className="material-symbols-outlined text-xl sm:text-2xl group-hover:animate-bounce">chat</span>
         </a>
     )
 }

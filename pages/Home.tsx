@@ -122,7 +122,7 @@ const Home: React.FC = () => {
             </section>
 
             {/* Who We Serve */}
-            <section className="py-16 md:py-24 px-6 md:px-8 bg-white rounded-[2rem] md:rounded-[3rem] my-4 md:my-8 mx-0 md:mx-4 shadow-sm">
+            <section id="who-we-serve" className="py-16 md:py-24 px-6 md:px-8 bg-white rounded-[2rem] md:rounded-[3rem] my-4 md:my-8 mx-0 md:mx-4 shadow-sm">
                 <div className="max-w-7xl mx-auto">
                     <Reveal>
                         <h2 className="font-display text-4xl md:text-5xl text-brand-dark text-center mb-12 md:mb-20">Who We Serve</h2>
