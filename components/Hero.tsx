@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
     }, []);
 
     return (
-        <section ref={containerRef} className="relative pt-24 pb-8 md:pt-48 md:pb-32 overflow-hidden min-h-[80vh] md:min-h-[90vh] flex items-center px-4 md:px-6">
+        <section ref={containerRef} className="relative pt-20 pb-6 sm:pt-24 sm:pb-8 md:pt-48 md:pb-32 overflow-hidden min-h-[70vh] sm:min-h-[80vh] md:min-h-[90vh] flex items-center px-4 sm:px-6">
             {/* Dynamic Background Elements */}
             <MotionDiv
                 animate={{
@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
                     opacity: [0.3, 0.5, 0.3]
                 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute top-[-10%] right-[-10%] w-[300px] md:w-[700px] h-[300px] md:h-[700px] bg-gradient-to-tr from-[#E8F0E6] to-[#dcfce7] rounded-full blur-[80px] -z-10"
+                className="absolute top-[-10%] right-[-10%] w-[200px] sm:w-[300px] md:w-[700px] h-[200px] sm:h-[300px] md:h-[700px] bg-gradient-to-tr from-[#E8F0E6] to-[#dcfce7] rounded-full blur-[60px] sm:blur-[80px] -z-10"
             ></MotionDiv>
             <MotionDiv
                 animate={{
@@ -44,10 +44,10 @@ const Hero: React.FC = () => {
                     opacity: [0.2, 0.4, 0.2]
                 }}
                 transition={{ duration: 15, repeat: Infinity, ease: "linear", delay: 2 }}
-                className="absolute bottom-[-10%] left-[-10%] w-[250px] md:w-[600px] h-[250px] md:h-[600px] bg-gradient-to-br from-[#FECDD3] to-[#fff1f2] rounded-full blur-[80px] -z-10"
+                className="absolute bottom-[-10%] left-[-10%] w-[180px] sm:w-[250px] md:w-[600px] h-[180px] sm:h-[250px] md:h-[600px] bg-gradient-to-br from-[#FECDD3] to-[#fff1f2] rounded-full blur-[60px] sm:blur-[80px] -z-10"
             ></MotionDiv>
 
-            <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center relative z-10">
 
                 {/* Left Content */}
                 <div className="text-center lg:text-left flex flex-col items-center lg:items-start order-2 lg:order-1">
@@ -55,34 +55,34 @@ const Hero: React.FC = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 md:px-6 rounded-full bg-white/80 backdrop-blur-sm border border-brand-light shadow-sm mb-6 md:mb-8 hover:shadow-md transition-shadow cursor-default group"
+                        className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 md:px-6 rounded-full bg-white/80 backdrop-blur-sm border border-brand-light shadow-sm mb-4 sm:mb-6 md:mb-8 hover:shadow-md transition-shadow cursor-default group"
                     >
-                        <span className="material-symbols-outlined text-[#6B8E5E] text-lg md:text-xl group-hover:animate-spin transition-transform" aria-hidden="true">spa</span>
-                        <span className="text-[10px] md:text-sm font-bold tracking-widest text-brand-dark uppercase">Wellness Reimagined</span>
+                        <span className="material-symbols-outlined text-[#6B8E5E] text-base sm:text-lg md:text-xl group-hover:animate-spin transition-transform" aria-hidden="true">spa</span>
+                        <span className="text-[9px] sm:text-[10px] md:text-sm font-bold tracking-widest text-brand-dark uppercase">Wellness Reimagined</span>
                     </MotionDiv>
 
-                    <h1 ref={headlineRef} className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-brand-dark leading-[1.1] mb-6 md:mb-8">
+                    <h1 ref={headlineRef} className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-brand-dark leading-[1.1] mb-4 sm:mb-6 md:mb-8">
                         <span className="block overflow-hidden"><span className="word inline-block">The</span> <span className="word inline-block">sanctuary</span></span>
                         <span className="block overflow-hidden"><span className="word inline-block">for</span> <span className="word inline-block relative text-[#6B8E5E]">
                             healing
-                            <svg className="absolute w-full h-2 md:h-3 -bottom-1 left-0 text-[#FDE68A] -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
+                            <svg className="absolute w-full h-1.5 sm:h-2 md:h-3 -bottom-0.5 sm:-bottom-1 left-0 text-[#FDE68A] -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
                                 <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" opacity="0.5" />
                             </svg>
                         </span> <span className="word inline-block">minds</span></span>
                     </h1>
 
-                    <p className="text-base md:text-xl text-brand-dark/70 font-medium mb-8 md:mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed px-2 md:px-0">
+                    <p className="text-sm sm:text-base md:text-xl text-brand-dark/70 font-medium mb-6 sm:mb-8 md:mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-4 lg:px-0">
                         A vibrant ecosystem for psychology professionals to learn, connect, and nurture their own wellbeing without the heaviness.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto px-4 md:px-0">
+                    <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0">
                         <MotionA
                             href="https://chat.whatsapp.com/HiIBVPYWfqk8A5Pm3X4Qpv"
                             target="_blank"
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.02, y: -2 }}
                             whileTap={{ scale: 0.98 }}
-                            className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#4A6A48] text-white font-bold text-lg shadow-xl shadow-[#4A6A48]/20 hover:shadow-[#4A6A48]/40 flex items-center justify-center gap-2 transition-all"
+                            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-[#4A6A48] text-white font-bold text-base sm:text-lg shadow-xl shadow-[#4A6A48]/20 hover:shadow-[#4A6A48]/40 flex items-center justify-center gap-2 transition-all"
                         >
                             <span>Join the Community</span>
                             <span className="material-symbols-outlined text-sm" aria-hidden="true">favorite</span>
@@ -91,7 +91,11 @@ const Hero: React.FC = () => {
                         <MotionButton
                             whileHover={{ scale: 1.02, y: -2 }}
                             whileTap={{ scale: 0.98 }}
-                            className="w-full sm:w-auto px-8 py-4 rounded-full bg-white border border-brand-light text-brand-dark font-bold text-lg shadow-sm hover:border-[#6B8E5E]/50 flex items-center justify-center gap-2 group transition-all"
+                            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-white border border-brand-light text-brand-dark font-bold text-base sm:text-lg shadow-sm hover:border-[#6B8E5E]/50 flex items-center justify-center gap-2 group transition-all"
+                            onClick={() => {
+                                const element = document.getElementById('who-we-serve');
+                                element?.scrollIntoView({ behavior: 'smooth' });
+                            }}
                         >
                             <span>Explore Solutions</span>
                             <span className="material-symbols-outlined text-sm group-hover:rotate-45 transition-transform" aria-hidden="true">explore</span>
@@ -99,22 +103,22 @@ const Hero: React.FC = () => {
                     </div>
 
                     {/* Social Proof */}
-                    <div className="mt-10 flex items-center justify-center lg:justify-start gap-4 opacity-0 animate-[fadeIn_1s_ease-out_1s_forwards]">
-                        <div className="flex -space-x-3">
+                    <div className="mt-8 sm:mt-10 flex items-center justify-center lg:justify-start gap-3 sm:gap-4 opacity-0 animate-[fadeIn_1s_ease-out_1s_forwards]">
+                        <div className="flex -space-x-2 sm:-space-x-3">
                             {[
                                 "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100",
                                 "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&h=100",
                                 "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100"
                             ].map((src, i) => (
-                                <div key={i} className="w-10 h-10 md:w-12 md:h-12 rounded-full border-[3px] border-white overflow-hidden shadow-sm">
-                                    <img alt="User" className="w-full h-full object-cover" src={src} />
+                                <div key={i} className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full border-2 sm:border-[3px] border-white overflow-hidden shadow-sm">
+                                    <img alt={`User ${i + 1}`} className="w-full h-full object-cover" src={src} />
                                 </div>
                             ))}
-                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#D1E2CF] flex items-center justify-center text-[10px] md:text-xs font-bold text-[#4A6741] border-[3px] border-white shadow-sm">+2k</div>
+                            <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-[#D1E2CF] flex items-center justify-center text-[9px] sm:text-[10px] md:text-xs font-bold text-[#4A6741] border-2 sm:border-[3px] border-white shadow-sm">+2k</div>
                         </div>
                         <div className="text-left">
-                            <p className="text-xs md:text-sm font-bold text-brand-dark">Trusted by pros</p>
-                            <div className="flex text-yellow-400 text-xs">★★★★★</div>
+                            <p className="text-[10px] sm:text-xs md:text-sm font-bold text-brand-dark">Trusted by pros</p>
+                            <div className="flex text-yellow-400 text-[10px] sm:text-xs">★★★★★</div>
                         </div>
                     </div>
                 </div>

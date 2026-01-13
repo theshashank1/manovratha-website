@@ -3,18 +3,18 @@ import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
     return (
-        <div className="bg-brand-dark text-brand-light/80 pt-20 rounded-t-[3rem] md:rounded-t-[5rem] mt-12 relative z-10">
-            <div className="max-w-7xl mx-auto px-6 md:px-12 pb-12">
-                <div className="grid md:grid-cols-4 gap-12 mb-16">
-                    <div className="col-span-1 md:col-span-2">
-                        <div className="flex items-center gap-3 mb-6">
-                            <img src="/logo.svg" alt="Manovratha" className="w-10 h-10 object-contain bg-white rounded-lg p-1" />
-                            <span className="font-display text-3xl text-white">Manovratha</span>
+        <div className="bg-brand-dark text-brand-light/80 pt-12 sm:pt-16 md:pt-20 rounded-t-[2rem] sm:rounded-t-[3rem] md:rounded-t-[5rem] mt-8 sm:mt-12 relative z-10">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 pb-8 sm:pb-10 md:pb-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-10 sm:mb-12 md:mb-16">
+                    <div className="col-span-1 sm:col-span-2 md:col-span-2">
+                        <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                            <img src="/logo.svg" alt="Manovratha" className="w-8 h-8 sm:w-10 sm:h-10 object-contain bg-white rounded-lg p-1" />
+                            <span className="font-display text-2xl sm:text-3xl text-white">Manovratha</span>
                         </div>
-                        <p className="leading-relaxed max-w-sm mb-8 text-lg">
+                        <p className="leading-relaxed max-w-sm mb-6 sm:mb-8 text-base sm:text-lg">
                             Empowering professionals, institutions, and every mind that matters with ethical, AI-integrated care.
                         </p>
-                        <div className="flex gap-4">
+                        <div className="flex gap-3 sm:gap-4">
                             {[
                                 {
                                     l: 'LinkedIn',
@@ -42,10 +42,10 @@ const Footer: React.FC = () => {
                                 }
                             ].map((s, i) => (
                                 <a key={i} href={s.link} target="_blank" rel="noreferrer"
-                                    className={`w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white transition-all duration-300 transform hover:scale-110 ${s.bg}`}
+                                    className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 flex items-center justify-center text-white transition-all duration-300 transform hover:scale-110 ${s.bg}`}
                                     aria-label={s.l}
                                 >
-                                    <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
+                                    <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5 fill-current">
                                         {s.path}
                                     </svg>
                                 </a>
@@ -54,8 +54,8 @@ const Footer: React.FC = () => {
                     </div>
 
                     <div>
-                        <h3 className="font-bold text-white text-lg mb-8 tracking-wide">Explore</h3>
-                        <ul className="space-y-6 text-base">
+                        <h3 className="font-bold text-white text-base sm:text-lg mb-6 sm:mb-8 tracking-wide">Explore</h3>
+                        <ul className="space-y-4 sm:space-y-6 text-sm sm:text-base">
                             {[
                                 { label: 'For Professionals', route: '/professionals', icon: 'psychology' },
                                 { label: 'For Institutions', route: '/organizations', icon: 'corporate_fare' },
@@ -68,17 +68,17 @@ const Footer: React.FC = () => {
                                             href={item.route}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="group flex items-center gap-3 hover:text-brand-primary transition-colors text-left w-full"
+                                            className="group flex items-center gap-2 sm:gap-3 hover:text-brand-primary transition-colors text-left w-full"
                                         >
-                                            <span className="material-symbols-outlined text-xl text-brand-secondary group-hover:text-brand-primary transition-colors" aria-hidden="true">{item.icon}</span>
+                                            <span className="material-symbols-outlined text-lg sm:text-xl text-brand-secondary group-hover:text-brand-primary transition-colors" aria-hidden="true">{item.icon}</span>
                                             <span>{item.label}</span>
                                         </a>
                                     ) : (
                                         <Link
                                             to={item.route}
-                                            className="group flex items-center gap-3 hover:text-brand-primary transition-colors text-left w-full"
+                                            className="group flex items-center gap-2 sm:gap-3 hover:text-brand-primary transition-colors text-left w-full"
                                         >
-                                            <span className="material-symbols-outlined text-xl text-brand-secondary group-hover:text-brand-primary transition-colors" aria-hidden="true">{item.icon}</span>
+                                            <span className="material-symbols-outlined text-lg sm:text-xl text-brand-secondary group-hover:text-brand-primary transition-colors" aria-hidden="true">{item.icon}</span>
                                             <span>{item.label}</span>
                                         </Link>
                                     )}
@@ -88,8 +88,8 @@ const Footer: React.FC = () => {
                     </div>
 
                     <div>
-                        <h3 className="font-bold text-white text-lg mb-8 tracking-wide">Support</h3>
-                        <ul className="space-y-6 text-base">
+                        <h3 className="font-bold text-white text-base sm:text-lg mb-6 sm:mb-8 tracking-wide">Support</h3>
+                        <ul className="space-y-4 sm:space-y-6 text-sm sm:text-base">
                             {[
                                 { label: 'Contact Us', route: '/contact', icon: 'mail' },
                                 { label: 'FAQ', route: '/faq', icon: 'live_help' },
@@ -98,9 +98,9 @@ const Footer: React.FC = () => {
                                 <li key={idx}>
                                     <Link
                                         to={item.route}
-                                        className="group flex items-center gap-3 hover:text-brand-primary transition-colors text-left w-full"
+                                        className="group flex items-center gap-2 sm:gap-3 hover:text-brand-primary transition-colors text-left w-full"
                                     >
-                                        <span className="material-symbols-outlined text-xl text-brand-secondary group-hover:text-brand-primary transition-colors" aria-hidden="true">{item.icon}</span>
+                                        <span className="material-symbols-outlined text-lg sm:text-xl text-brand-secondary group-hover:text-brand-primary transition-colors" aria-hidden="true">{item.icon}</span>
                                         <span>{item.label}</span>
                                     </Link>
                                 </li>
@@ -109,9 +109,9 @@ const Footer: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-medium text-brand-light/70">
+                <div className="pt-6 sm:pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4 text-xs sm:text-sm font-medium text-brand-light/70">
                     <p>© 2023 Manovratha Mental Health Services.</p>
-                    <div className="flex gap-6">
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 items-center">
                         <span>Made with ❤️ in India</span>
                         <span>MHC Act 2017 Compliant</span>
                     </div>

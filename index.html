@@ -146,17 +146,29 @@
     </script>
 
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport" />
+    <meta name="language" content="English" />
+    <meta http-equiv="content-language" content="en-IN" />
 
     <!-- SEO Meta Tags -->
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1" />
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="description"
         content="Manovratha - A holistic global mental health sanctuary for professionals, institutions, and every mind that matters. Evidence-based care, AI-integrated support, and a collaborative ecosystem." />
     <meta name="keywords"
-        content="mental health, therapy, counseling, psychology, wellness, India, mental healthcare, psychologist, psychiatrist, counselor, Manovratha, online therapy, mental health platform" />
+        content="mental health, therapy, counseling, psychology, wellness, India, mental healthcare, psychologist, psychiatrist, counselor, Manovratha, online therapy, mental health platform, mental health professionals, employee wellness, student counseling, corporate wellness, EAP" />
     <meta name="author" content="Manovratha Mental Health Services" />
+    <meta name="theme-color" content="#5A7A58" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Manovratha" />
     <link rel="canonical" href="https://manovratha.in/" />
+    
+    <!-- Geographic Tags -->
+    <meta name="geo.region" content="IN" />
+    <meta name="geo.placename" content="India" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -182,9 +194,12 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Manovratha Mental Health Services",
+        "alternateName": "Manovratha",
         "url": "https://manovratha.in",
         "logo": "https://manovratha.in/logo.svg",
         "description": "A holistic global mental health sanctuary for professionals, institutions, and every mind that matters.",
+        "foundingDate": "2023",
+        "slogan": "Healing Minds",
         "sameAs": [
             "https://www.linkedin.com/company/manovratha/",
             "https://www.instagram.com/manovratha/",
@@ -193,8 +208,60 @@
         "contactPoint": {
             "@type": "ContactPoint",
             "email": "wellbeing@manovratha.in",
-            "contactType": "customer service"
+            "contactType": "customer service",
+            "availableLanguage": ["English", "Hindi"]
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "India"
+        },
+        "serviceType": [
+            "Mental Health Services",
+            "Counseling",
+            "Therapy",
+            "Professional Training",
+            "Wellness Programs"
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Manovratha",
+        "url": "https://manovratha.in",
+        "description": "A holistic global mental health sanctuary for professionals, institutions, and every mind that matters.",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Manovratha Mental Health Services",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://manovratha.in/logo.svg"
+            }
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://manovratha.in/search?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
         }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MedicalOrganization",
+        "name": "Manovratha Mental Health Services",
+        "url": "https://manovratha.in",
+        "medicalSpecialty": [
+            "Mental Health",
+            "Psychology",
+            "Counseling",
+            "Psychiatry"
+        ],
+        "description": "Evidence-based mental health care platform connecting professionals, institutions, and individuals."
     }
     </script>
 
