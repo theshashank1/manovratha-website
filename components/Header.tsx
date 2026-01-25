@@ -30,7 +30,7 @@ const Header: React.FC = () => {
 
   // Dynamic header transformations
   const headerWidth = useTransform(scrollY, [0, 50], ["100%", "92%"]);
-  const headerTop = useTransform(scrollY, [0, 50], ["0px", "16px"]);
+  // const headerTop = useTransform(scrollY, [0, 50], ["0px", "16px"]);
   const headerRadius = useTransform(scrollY, [0, 50], ["0px", "24px"]);
   const headerBg = useTransform(
     scrollY,
@@ -66,14 +66,14 @@ const Header: React.FC = () => {
       <MotionDiv
         style={{
           width: headerWidth,
-          marginTop: headerTop,
+          // marginTop: headerTop,
           borderRadius: headerRadius,
           backgroundColor: headerBg,
           borderColor: headerBorder,
           boxShadow: headerShadow,
           backdropFilter: headerBackdrop,
         }}
-        className="fixed top-0 left-0 right-0 z-50 mx-auto max-w-7xl border border-transparent transition-all duration-300 transform-gpu safe-top"
+        className="fixed top-0 left-0 right-0 z-50 mx-auto max-w-7xl border border-transparent transition-all duration-300 transform-gpu"
       >
         <div className="px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
           {/* Creative Logo */}
